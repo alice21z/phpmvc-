@@ -12,7 +12,7 @@ class Database {
     public function __construct()
     {
         //data source name
-        $dsn = 'mysql:host' . $this->host . ';dbname' . $this->db_name;
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->db_name;
 
         $option = [
             PDO::ATTR_PERSISTENT => true,
@@ -67,5 +67,10 @@ class Database {
     {
         $this->execute();
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function rowCount()
+    {
+        return $this->stmt->rowCount();
     }
 }
